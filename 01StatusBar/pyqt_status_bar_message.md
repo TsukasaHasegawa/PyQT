@@ -1,4 +1,4 @@
-# PyQT5 - まとめ
+# Status Bar - まとめ
 ## setGeometory
   * geometoryというプロパティのセッター
   * geometoryは位置や座標。
