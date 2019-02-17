@@ -7,9 +7,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.width = 1000
         self.height = 600
-        self.initUI()
+        self.setupStatusBar()
 
-    def initUI(self):
+    def setupStatusBar(self):
         self.setGeometry(0, 0, self.width, self.height)
         self.setWindowTitle('Statusbar')
         self.statusBar().showMessage( 'Here is Status Bar...')
