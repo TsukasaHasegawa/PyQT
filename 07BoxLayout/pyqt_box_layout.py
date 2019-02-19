@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class App(QWidget):
+class Widget(QWidget):
     def __init__(self):
         super().__init__()
         self.title = 'Box Layout'
@@ -73,7 +73,7 @@ class App(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    ex = App()
+    widget = Widget()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
