@@ -9,7 +9,6 @@ from sklearn.datasets import load_iris
 # アルゴリズム
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
-# サポート
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
@@ -98,9 +97,6 @@ class ResultWindow(QWidget):
         # K近傍法とロジスティック回帰で分類する
         pipe_knn_50.fit(X_train,y_train.as_matrix().ravel())
         pipe_logistic.fit(X_train,y_train.as_matrix().ravel())
-        # 実行
-        pipe_knn_50.fit(X_train,y_train.as_matrix().ravel())
-        pipe_logistic.fit(X_train,y_train.as_matrix().ravel())
 
         # KNN - Train
         self.knnTrainLabel = QLabel("KNN - Nearest 50 - Train: %.3f" % accuracy_score(y_train, pipe_knn_50.predict(X_train)))
@@ -122,16 +118,16 @@ class ResultWindow(QWidget):
         X = pd.DataFrame(dataset.data, columns=dataset.feature_names)
         y = pd.DataFrame(dataset.target, columns=['y'])
         X.join(y).head()
+
         # Holdout法
         X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.20, random_state=1)
         pipe_knn_50 = Pipeline([('scl',StandardScaler()),('est',KNeighborsClassifier(n_neighbors=50))])
         pipe_logistic = Pipeline([('scl',StandardScaler()),('est',LogisticRegression(random_state=1))])
+
         # K近傍法とロジスティック回帰で分類する
         pipe_knn_50.fit(X_train,y_train.as_matrix().ravel())
         pipe_logistic.fit(X_train,y_train.as_matrix().ravel())
-        # 実行
-        pipe_knn_50.fit(X_train,y_train.as_matrix().ravel())
-        pipe_logistic.fit(X_train,y_train.as_matrix().ravel())
+
         # KNN - Train
         self.knnTrainLabel = QLabel("KNN - Nearest 50 - Train: %.3f" % accuracy_score(y_train, pipe_knn_50.predict(X_train)))
         self.layout.addWidget(self.knnTrainLabel)
